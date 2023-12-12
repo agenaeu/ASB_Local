@@ -104,37 +104,21 @@ local sets = {
 	haste = {
         Waist = 'Swift Belt',
 	},
-
-	--[[ PiercingArrow = {
-		Head = 'Emperor Hairpin',
-        Neck = {'Spike Necklace', 'Peacock Charm', 'Ranger\'s Necklace',},
-        Ear1 = 'Drone Earring',
-        Ear2 = 'Genin Earring',
-        Body = 'Noct Doublet +1',
-        Hands = {'Custom M Gloves','Noct Gloves +1',},
-        Ring1 = 'Puissance Ring',
-        Ring2 = 'Rajas Ring',
-        Back = 'Genin Mantle',
-        Waist = 'Mrc.Cpt. Belt',
-        Legs = 'Republic Cuisses',
+    meleeAcc = {
+        Ammo = 'Silver Bullet',
+        Head = 'Emperor Hairpin',
+        Neck = 'Peacock Charm',
+        Hands = 'Custom M Gloves',  
+        Ring1 = 'Sniper\'s Ring +1',
+        Ring2 = 'Sniper\'s Ring',
+        Waist = 'Life Belt',
         Feet = 'Leaping Boots',
-	},
+    },
+    
+    preshot = {
+        Head = 'Hunter\'s Beret',
+    }
 
-	splitShot = {
-		Head = 'Shr.Znr.Kabuto',
-		Body = 'Kirin\'s Osode',
-		Hands = 'Bandomusha Kote',
-        Legs = 'Shura Haidate',
-		Feet = 'Savage Gaiters',
-		Neck = 'Flame Gorget',
-        Waist = 'warwolf belt',
-		Ear1 = 'Bushinomimi',
-		Ear2 = 'Triumph Earring',
-		Ring1 = 'Flame Ring',
-		Ring2 = 'Rajas Ring',
-		Back = 'Forager\'s Mantle'
-	} ]]
-	
 	--[[ tp_haste = {		
 		Head = 'Panther mask +1',
 		Body = 'Kirin\'s Osode',
@@ -197,7 +181,7 @@ profile.HandleDefault = function()
 	local environment = gData.GetEnvironment();
 
 	if (player.Status == 'Engaged') then
-		gFunc.EquipSet(sets.tp_att);
+		gFunc.EquipSet(sets.meleeAcc);
 	else
 		if (settings.crafting == true) then
 			gFunc.EquipSet(sets.crafting);
@@ -225,6 +209,7 @@ profile.HandleMidcast = function()
 end
 
 profile.HandlePreshot = function()
+    gFunc.EquipSet(sets.preshot);
 end
 
 profile.HandleMidshot = function()
