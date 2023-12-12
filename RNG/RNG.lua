@@ -40,11 +40,11 @@ local sets = {
         Body = 'Hunter\'s Jerkin',
         Hands = 'Hunter\'s Bracers',
         Ring1 = 'Sniper\'s Ring +1',
-		Ring2 = "Rajas Ring",
+		Ring2 = "Scorpion Ring +1",
         Back = {'Amemet Mantle +1', 'Genin Mantle',},
         Waist = 'R.K. Belt +2',
         Legs = 'Republic Cuisses',
-        Feet = {'Hunter\'s Socks', 'Leaping Boots',},
+        Feet = 'Hunter\'s Socks',
 		Ammo = 'Silver Bullet',
 	},
 
@@ -117,7 +117,11 @@ local sets = {
     
     preshot = {
         Head = 'Hunter\'s Beret',
-    }
+    },
+
+	scavenge = {
+        Feet = 'Hunter\'s Socks',
+    },
 
 	--[[ tp_haste = {		
 		Head = 'Panther mask +1',
@@ -193,9 +197,11 @@ end
 
 profile.HandleAbility = function()
 	local action = gData.GetAction();
-	if string.match(action.Name, 'Barrage') then
+	if string.match(action.Name, 'Scavenge') then gFunc.EquipSet(sets.scavenge);
+	elseif string.match(action.Name, 'Barrage') then
 		gFunc.EquipSet(sets.barrage);
 	end
+	
 end
 
 profile.HandleItem = function()
@@ -214,7 +220,7 @@ end
 
 profile.HandleMidshot = function()
     local barrage = gData.GetBuffCount('Barrage');
-    gFunc.EquipSet(sets.tp_att);
+    gFunc.EquipSet(sets.tp);
 
    --[[  if (gcdisplay.GetCycle('MeleeSet') == 'Acc') then
         gFunc.EquipSet(sets.Midshot_Acc);
