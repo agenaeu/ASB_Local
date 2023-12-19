@@ -9,7 +9,6 @@ local sets = {
         Body = 'Ducal Aketon',
         Hands = 'Hunter\'s Bracers',        
         Ring1 = 'Sniper\'s Ring +1',
-		Ring2 = "Rajas Ring",
         Back = {'Amemet Mantle +1', 'Genin Mantle',},
         Waist = 'R.K. Belt +2',
         Legs = 'Republic Cuisses',
@@ -60,7 +59,7 @@ local sets = {
         Back = {'Amemet Mantle +1', 'Genin Mantle',},
         Waist = 'R.K. Belt +2',
         Legs = 'Republic Cuisses',
-        Feet = {'Hunter\'s Socks', 'Leaping Boots',},
+        Feet = 'Hunter\'s Socks', 
 		Ammo = 'Silver Bullet',
 	},
 	
