@@ -54,7 +54,8 @@ local sets = {
         Ear2 = 'Genin Earring',
         Body = 'Shikaree Aketon',
         Hands = 'Custom M Gloves',
-        Ring1 = 'Sniper\'s Ring +1',
+		--[[ Ring1 = 'Fire Ring', ]]
+        Ring1 = "Sniper\'s Ring +1",
 		Ring2 = "Rajas Ring",
         Back = {'Amemet Mantle +1', 'Genin Mantle',},
         Waist = 'R.K. Belt +2',
@@ -100,6 +101,14 @@ local sets = {
 		Hands = 'Carpenter\'s Gloves',
 	},
 
+	firesday = {
+		Ring1 = 'Fire Ring',
+	},
+
+	Lightningsday = {
+		Ring1 = 'Lightning Ring',
+	},
+
 	haste = {
         Waist = 'Swift Belt',
 	},
@@ -121,36 +130,6 @@ local sets = {
 	scavenge = {
         Feet = 'Hunter\'s Socks',
     },
-
-	--[[ tp_haste = {		
-		Head = 'Panther mask +1',
-		Body = 'Kirin\'s Osode',
-		Hands = 'Bandomusha Kote',
-        Legs = 'Byakko\'s Haidate',
-		Feet = 'Dune boots',
-		Neck = 'Faith Torque',
-        Waist = 'Black Belt',
-		Ear1 = 'Brutal Earring',
-		Ear2 = 'Wyvern Earring',
-		Ring1 = 'Flame Ring',
-		Ring2 = 'Rajas Ring',
-		Back = 'Forager\'s Mantle'
-	}, ]]
-	
-	--[[ tp_crit = {
-		Head = 'Panther mask +1',
-		Body = 'Kirin\'s Osode',
-		Hands = 'Bandomusha Kote',
-        Legs = 'Byakko\'s Haidate',
-		Feet = 'Sarutobi Kyahan',
-		Neck = 'Faith Torque',
-        Waist = 'Black Belt',
-		Ear1 = 'Brutal Earring',
-		Ear2 = 'Pilferer\'s Earring',
-		Ring1 = 'Flame Ring',
-		Ring2 = 'Rajas Ring',
-		Back = 'Forager\'s Mantle'
-	}, ]]
 	
 };
 
@@ -161,6 +140,8 @@ local settings = {
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /crafting /lac fwd crafting');
+	AshitaCore:GetChatManager():QueueCommand(1, '/macro book 2');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 9');
 end
 
 profile.OnUnload = function()
@@ -219,8 +200,13 @@ end
 
 profile.HandleMidshot = function()
     local barrage = gData.GetBuffCount('Barrage');
-    gFunc.EquipSet(sets.tp);
-
+	local day = gData.GetEnvironment().Day;
+    gFunc.EquipSet(sets.tp_att);
+	if (day == "Firesday" ) then 
+		gFunc.EquipSet(sets.firesday);
+	elseif (day == "Lightningsday") then 
+		gFunc.EquipSet(sets.Lightningsday);
+	end
    --[[  if (gcdisplay.GetCycle('MeleeSet') == 'Acc') then
         gFunc.EquipSet(sets.Midshot_Acc);
     end ]]
