@@ -253,11 +253,15 @@ end
 profile.HandleMidshot = function()
     local barrage = gData.GetBuffCount('Barrage');
 	local day = gData.GetEnvironment().Day;
-    gFunc.EquipSet(sets.tp);
+	local time = gDate.GetEnvironment().Time;
+    gFunc.EquipSet(sets.tp_att);
 	if (day == "Firesday" ) then 
 		gFunc.EquipSet(sets.firesday);
 	elseif (day == "Lightningday") then 
 		gFunc.EquipSet(sets.Lightningday);
+	end
+	if (time >= 6) and (time <= 18) then
+		gFunc.Equip('Ear2', 'Fenrir\'s Earring');
 	end
    --[[  if (gcdisplay.GetCycle('MeleeSet') == 'Acc') then
         gFunc.EquipSet(sets.Midshot_Acc);
@@ -271,13 +275,17 @@ end
 profile.HandleWeaponskill = function()
 	local ws = gData.GetAction();
 	local day = gData.GetEnvironment().Day;
+	local time = gDate.GetEnvironment().Time;
 	if string.match(ws.Name, 'Slug Shot') then
-		gFunc.EquipSet(sets.ws);
+		gFunc.EquipSet(sets.ws_att);
 		if (day == "Firesday" ) then 
 			gFunc.EquipSet(sets.firesday);
 		elseif (day == "Lightningday") then 
 			gFunc.EquipSet(sets.Lightningday);
-		end			
+		end	
+		if (time >= 6) and (time <= 18) then
+			gFunc.Equip('Ear2', 'Fenrir\'s Earring');
+		end		
 	else
 		gFunc.EquipSet(sets.ws);
 		if (day == "Firesday" ) then 
@@ -285,6 +293,9 @@ profile.HandleWeaponskill = function()
 		elseif (day == "Lightningday") then 
 			gFunc.EquipSet(sets.Lightningday);
 		end	
+		if (time >= 6) and (time <= 18) then
+			gFunc.Equip('Ear2', 'Fenrir\'s Earring');
+		end
 	end
 end
 
