@@ -253,8 +253,8 @@ end
 profile.HandleMidshot = function()
     local barrage = gData.GetBuffCount('Barrage');
 	local day = gData.GetEnvironment().Day;
-	local time = gDate.GetEnvironment().Time;
-    gFunc.EquipSet(sets.tp_att);
+	local time = gData.GetEnvironment().Time;
+    gFunc.EquipSet(sets.tp_att_alt);
 	if (day == "Firesday" ) then 
 		gFunc.EquipSet(sets.firesday);
 	elseif (day == "Lightningday") then 
@@ -275,9 +275,9 @@ end
 profile.HandleWeaponskill = function()
 	local ws = gData.GetAction();
 	local day = gData.GetEnvironment().Day;
-	local time = gDate.GetEnvironment().Time;
+	local time = gData.GetEnvironment().Time;
 	if string.match(ws.Name, 'Slug Shot') then
-		gFunc.EquipSet(sets.ws_att);
+		gFunc.EquipSet(sets.ws_att_alt);
 		if (day == "Firesday" ) then 
 			gFunc.EquipSet(sets.firesday);
 		elseif (day == "Lightningday") then 
