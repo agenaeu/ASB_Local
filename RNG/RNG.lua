@@ -293,7 +293,7 @@ profile.HandleWeaponskill = function()
 	local day = gData.GetEnvironment().Day;
 	local time = gData.GetEnvironment().Time;
 	if string.match(ws.Name, 'Slug Shot') then
-		gFunc.EquipSet(sets.ws_alt);
+		gFunc.EquipSet(sets.ws_att_alt);
 		if (day == "Firesday" ) then 
 			gFunc.EquipSet(sets.firesday);
 		elseif (day == "Lightningday") then 
