@@ -126,6 +126,22 @@ local sets = {
 		
 	},
 
+    ws_att_alt = {
+		Head = 'Hunter\'s Beret',
+        Neck = 'Ranger\'s Necklace',
+        Ear1 = 'Drone Earring',
+        Ear2 = 'Genin Earring',
+        Body = 'Shikaree Aketon',
+        Hands = 'Custom M Gloves',
+        Ring1 = 'Sniper\'s Ring +1',
+		Ring2 = "Rajas Ring",
+        Back = 'Amemet Mantle +1',
+        Waist = 'R.K. Belt +2',
+        Legs = 'Republic Cuisses',
+        Feet = 'Hunter\'s Socks',
+		
+	},
+
 	ws_att = {
 		Head = 'Hunter\'s Beret',
         Neck = 'Ranger\'s Necklace',
@@ -253,8 +269,8 @@ end
 profile.HandleMidshot = function()
     local barrage = gData.GetBuffCount('Barrage');
 	local day = gData.GetEnvironment().Day;
-	local time = gDate.GetEnvironment().Time;
-    gFunc.EquipSet(sets.tp_att);
+	local time = gData.GetEnvironment().Time;
+    gFunc.EquipSet(sets.tp_att_alt);
 	if (day == "Firesday" ) then 
 		gFunc.EquipSet(sets.firesday);
 	elseif (day == "Lightningday") then 
@@ -275,9 +291,9 @@ end
 profile.HandleWeaponskill = function()
 	local ws = gData.GetAction();
 	local day = gData.GetEnvironment().Day;
-	local time = gDate.GetEnvironment().Time;
+	local time = gData.GetEnvironment().Time;
 	if string.match(ws.Name, 'Slug Shot') then
-		gFunc.EquipSet(sets.ws_att);
+		gFunc.EquipSet(sets.ws_alt);
 		if (day == "Firesday" ) then 
 			gFunc.EquipSet(sets.firesday);
 		elseif (day == "Lightningday") then 
