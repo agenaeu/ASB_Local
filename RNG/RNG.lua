@@ -24,10 +24,9 @@ local sets = {
         Hands = 'Hunter\'s Bracers',
 		Ring1 = 'Sniper\'s Ring +1',
         Ring2 = 'Scorpion Ring +1',
-        Back = {'Amemet Mantle +1', 'Genin Mantle',},
         Waist = 'Scout\'s Belt',
         Legs = 'Republic Cuisses',
-        Feet = {'Hunter\'s Socks', 'Leaping Boots',},
+        Feet = 'Hunter\'s Socks',
 		
 	},
 
@@ -40,7 +39,6 @@ local sets = {
         Hands = 'Hunter\'s Bracers',
         Ring1 = 'Sniper\'s Ring +1',
 		Ring2 = "Scorpion Ring +1",
-        Back = 'Amemet Mantle +1',
         Waist = 'Scout\'s Belt',
         Legs = 'Scout\'s Braccae',
         Feet = 'Hunter\'s Socks',
@@ -55,7 +53,6 @@ local sets = {
         Hands = 'Hunter\'s Bracers',
         Ring1 = 'Sniper\'s Ring +1',
 		Ring2 = "Scorpion Ring +1",
-        Back = {'Amemet Mantle +1', 'Genin Mantle',},
         Waist = 'R.K. Belt +2',
         Legs = 'Republic Cuisses',
         Feet = 'Hunter\'s Socks',
@@ -71,7 +68,6 @@ local sets = {
         Hands = 'Custom M Gloves',
         Ring1 = "Sniper\'s Ring +1",
 		Ring2 = "Rajas Ring",
-        Back = 'Amemet Mantle +1',
         Waist = 'Scout\'s Belt',
         Legs = 'Republic Cuisses',
         Feet = 'Hunter\'s Socks', 
@@ -87,7 +83,6 @@ local sets = {
         Hands = 'Custom M Gloves',
         Ring1 = "Sniper\'s Ring +1",
 		Ring2 = "Rajas Ring",
-        Back = {'Amemet Mantle +1', 'Genin Mantle',},
         Waist = 'R.K. Belt +2',
         Legs = 'Republic Cuisses',
         Feet = 'Hunter\'s Socks', 
@@ -103,10 +98,9 @@ local sets = {
         Hands = 'Hunter\'s Bracers',
         Ring1 = 'Sniper\'s Ring +1',
         Ring2 = 'Scorpion Ring +1',
-        Back = 'Amemet Mantle +1',
         Waist = 'Scout\'s Belt',
         Legs = 'Scout\'s Braccae',
-        Feet = {'Hunter\'s Socks', 'Leaping Boots',},
+        Feet = 'Hunter\'s Socks',
 		
 	},
 
@@ -119,23 +113,6 @@ local sets = {
         Hands = 'Hunter\'s Bracers',
         Ring1 = 'Sniper\'s Ring +1',
         Ring2 = 'Scorpion Ring +1',
-        Back = 'Amemet Mantle +1',
-        Waist = 'R.K. Belt +2',
-        Legs = 'Republic Cuisses',
-        Feet = {'Hunter\'s Socks', 'Leaping Boots',},
-		
-	},
-
-    ws_att_alt = {
-		Head = 'Hunter\'s Beret',
-        Neck = 'Ranger\'s Necklace',
-        Ear1 = 'Drone Earring',
-        Ear2 = 'Genin Earring',
-        Body = 'Shikaree Aketon',
-        Hands = 'Custom M Gloves',
-        Ring1 = 'Sniper\'s Ring +1',
-		Ring2 = "Rajas Ring",
-        Back = 'Amemet Mantle +1',
         Waist = 'R.K. Belt +2',
         Legs = 'Republic Cuisses',
         Feet = 'Hunter\'s Socks',
@@ -151,10 +128,9 @@ local sets = {
         Hands = 'Custom M Gloves',
         Ring1 = 'Sniper\'s Ring +1',
 		Ring2 = "Rajas Ring",
-        Back = 'Amemet Mantle +1',
         Waist = 'Scout\'s Belt',
         Legs = 'Republic Cuisses',
-        Feet = {'Hunter\'s Socks', 'Leaping Boots',},
+        Feet = 'Hunter\'s Socks',
 		
 	},
 
@@ -179,15 +155,27 @@ local sets = {
     meleeAcc = {
         Head = 'Emperor Hairpin',
         Neck = 'Peacock Charm',
+        Body = 'Shikaree Aketon',
         Hands = 'Aiming Bracelets',  
         Ring1 = 'Sniper\'s Ring +1',
         Ring2 = 'Sniper\'s Ring',
         Waist = 'Life Belt',
         Feet = 'Dusk Ledelsens',
     },
+
+    meleeAcc_alt = {
+        Head = 'Emperor Hairpin',
+        Neck = 'Peacock Charm',
+        Hands = 'Aiming Bracelets',  
+        Ring1 = 'Sniper\'s Ring +1',
+        Ring2 = 'Sniper\'s Ring',
+        Waist = 'Life Belt',
+        Feet = 'Leaping Boots',
+    },
     
     preshot = {
         Head = 'Hunter\'s Beret',
+        Ammo = 'Silver Bullet',
     },
 
 	scavenge = {
@@ -228,7 +216,7 @@ profile.HandleDefault = function()
 	local environment = gData.GetEnvironment();
 	local day = gData.GetEnvironment().Day;
 	if (player.Status == 'Engaged') then
-		gFunc.EquipSet(sets.meleeAcc);
+		gFunc.EquipSet(sets.meleeAcc_alt);
 		if (day == "Firesday" ) then 
 			gFunc.EquipSet(sets.firesday);
 		elseif (day == "Lightningday") then 
@@ -270,7 +258,7 @@ profile.HandleMidshot = function()
     local barrage = gData.GetBuffCount('Barrage');
 	local day = gData.GetEnvironment().Day;
 	local time = gData.GetEnvironment().Time;
-    gFunc.EquipSet(sets.tp_att_alt);
+    gFunc.EquipSet(sets.tp_alt);
 	if (day == "Firesday" ) then 
 		gFunc.EquipSet(sets.firesday);
 	elseif (day == "Lightningday") then 
@@ -293,7 +281,7 @@ profile.HandleWeaponskill = function()
 	local day = gData.GetEnvironment().Day;
 	local time = gData.GetEnvironment().Time;
 	if string.match(ws.Name, 'Slug Shot') then
-		gFunc.EquipSet(sets.ws_att_alt);
+		gFunc.EquipSet(sets.ws_alt);
 		if (day == "Firesday" ) then 
 			gFunc.EquipSet(sets.firesday);
 		elseif (day == "Lightningday") then 
